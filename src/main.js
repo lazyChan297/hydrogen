@@ -14,7 +14,7 @@ import { InfiniteScroll } from 'mint-ui'
 import VueClipboard from 'vue-clipboard2'
 import http from '@/utils/http'
 import { checkToken, setStore, getStore, removeStore, getUrlParms } from '@/utils/mUtils'
-
+import "./assets/stylus/index.styl"
 // mint-ui按需引入组件
 Vue.use(InfiniteScroll)
 
@@ -36,14 +36,14 @@ NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
 
 console.log(process.env.NODE_ENV)
 // 服务器地址
-if (process.env.NODE_ENV == 'development') {  
+if (process.env.NODE_ENV == 'development') {
   // 开发环境
   global.serverHost = ""
 }else{
   // 生产服务器
-  // global.serverHost = "https://caomeng.me"
+  global.serverHost = "https://caomeng.me"
   // 测服务器
-  global.serverHost = "https://ceshi168.caomeng.me"
+  // global.serverHost = "https://ceshi168.caomeng.me"
 }
 
 FastClick.attach(document.body)
@@ -54,9 +54,9 @@ let url = window.location.href
 
 router.beforeEach((to, from, next) => {
   // 获取微信jssdk配置项
-  http.post('/jsconfig', { 
-    url: encodeURI(location.href.split('#')[0]), 
-    isHideLoad: true 
+  http.post('/jsconfig', {
+    url: encodeURI(location.href.split('#')[0]),
+    isHideLoad: true
   }, false, res => {
     if (res.status == 1) {
       Vue.wechat.config(res.data.jsConfig)

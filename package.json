@@ -17,6 +17,8 @@
     "lodash": "^4.17.10",
     "mint-ui": "^2.2.13",
     "nprogress": "^0.2.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
     "uuid": "^3.3.2",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^2.6.7",

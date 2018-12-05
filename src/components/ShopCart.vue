@@ -33,7 +33,7 @@
     </div>
     <div class="fixBar-wrapper" v-if="cartList.length > 0">
       <div class="fixBar">
-        <div class="totalPrice">总计：<span>¥{{ totalPrice | toDecimal }}</span>
+        <div class="totalPrice" :class="isActivity?'':'isSingle'">总计：<span>¥{{ totalPrice | toDecimal }}</span>
 				<p class="activity" v-if="isActivity">活动买二免一,已优惠{{saves}}元</p>
 				</div>
         <div class="checkout">
@@ -61,6 +61,7 @@ export default {
 			cartList: [],
       checkAll: true,
 			isActivity: false,
+			saves: 0
 		}
 	},
   computed: {
@@ -71,7 +72,15 @@ export default {
           totalPrice += item.goodsPrice * item.quantity;
         }
       })
-      return totalPrice
+			if (this.saves > 0) {
+				totalPrice = totalPrice - this.saves
+				this.isActivity = true
+				return totalPrice
+			} else {
+				this.isActivity = false
+				return totalPrice
+			}
+
     },
     sureClick () {
       let item = this.cartList.find(n => n.checked == true);
@@ -81,7 +90,9 @@ export default {
   },
   methods: {
     cartChange (val) {
+
       this.cartList[val.index].quantity = val.count
+			this.setCartList()
     },
     getCartList () {
       http.get('/cart', {}, false, res => {
@@ -90,6 +101,9 @@ export default {
 					if (res.data.saves > 0) {
 						this.isActivity = true
 						this.saves = res.data.saves
+					} else {
+						this.saves = 0
+						this.isActivity = false
 					}
           let arr = [];
           for (let i in cartList) {
@@ -101,6 +115,31 @@ export default {
         }
       })
     },
+		setCartList() {
+			let select = [], that = this
+			this.cartList.forEach((item, index) => {
+				if (item.checked) {
+					select.push(item)
+				}
+			})
+			let str = JSON.stringify({ goods: select })
+			http.post('/cart', { cart: str }, false, res => {
+				if (res.status == 1) {
+					console.log(res.data.saves)
+					if (res.data.saves > 0) {
+						this.saves = res.data.saves
+						this.isActivity = true
+					}
+					that.$vux.toast.show({
+						text: '更新成功!',
+						type: 'success',
+						width: 'auto',
+						position: 'middle'
+					})
+
+				}
+			})
+		},
     // 去结算
     toPayment () {
       if (this.totalPrice == 0) return
@@ -302,5 +341,8 @@ export default {
 }
 .cart-item .content {
   flex: 1;
+}
+.isSingle{
+	line-height: 45px;
 }
 </style>
