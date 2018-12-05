@@ -40,10 +40,10 @@
       <div class="part-title">精品好货</div>
       <recommend-list :recommend="goodsList"></recommend-list>
     </div>
-    <div class="activity">
+    <!-- <div class="activity">
       <div class="part-title">买二免一<span>(买一款可送其它任意一款产品)</span></div>
       <recommend-list :recommend="activityList"></recommend-list>
-    </div>
+    </div> -->
     <!-- <a class="toFuPing" href="https://fupin.caomeng.me">
       <img src="./../../assets/images/package.gif">
     </a> -->
@@ -166,7 +166,6 @@ export default {
       http.get('/index', {}, false, res => {
         if (res.status == 1) {
           this.goodsList = res.data.goods[1]
-          this.activityList = res.data.goods[2]
           this.$wechat.ready(() => {
             this.$wechat.onMenuShareTimeline({
               title: res.data.shareTimeline.title,

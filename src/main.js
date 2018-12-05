@@ -36,7 +36,7 @@ NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
 
 console.log(process.env.NODE_ENV)
 // 服务器地址
-if (process.env.NODE_ENV == 'development') {  
+if (process.env.NODE_ENV == 'development') {
   // 开发环境
   global.serverHost = ""
 }else{
@@ -54,9 +54,9 @@ let url = window.location.href
 
 router.beforeEach((to, from, next) => {
   // 获取微信jssdk配置项
-  http.post('/jsconfig', { 
-    url: encodeURI(location.href.split('#')[0]), 
-    isHideLoad: true 
+  http.post('/jsconfig', {
+    url: encodeURI(location.href.split('#')[0]),
+    isHideLoad: true
   }, false, res => {
     if (res.status == 1) {
       Vue.wechat.config(res.data.jsConfig)
