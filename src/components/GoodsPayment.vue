@@ -47,10 +47,10 @@
         <span class="title">运费</span>
         <span class="color-red">¥0.00</span>
       </div>
-			<div class="params" v-if="saves">
+			<!-- <div class="params" v-if="saves">
         <span class="title">优惠</span>
         <span class="color-red">活动买二免一，优惠{{saves}}元</span>
-      </div>
+      </div> -->
       <div class="total-price">合计： <span class="color-red">¥{{ totalPrice | toDecimal }}</span></div>
     </div>
     <div class="payment-btn">
@@ -74,8 +74,7 @@ export default {
 			addressData: {},
 			goodsList: [],
       cartNo: '',
-      type: 'goods',
-			saves: 0
+      type: 'goods'
 		}
 	},
   computed: {
@@ -84,7 +83,6 @@ export default {
       this.goodsList.forEach((n) => {
         total += n.goodsPrice * n.quantity
       })
-			total = total - this.saves
       return total
     }
   },
@@ -175,7 +173,6 @@ export default {
         if (res.status == 1) {
           let cartObj = res.data.cart.goods
           let goodsList = []
-					this.saves = res.data.cart.saves
           for (let i in cartObj) {
             goodsList.push(cartObj[i])
           }
