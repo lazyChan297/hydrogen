@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="22px" viewBox="0 0 20 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>nav-shop1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="-7.68710783%" y1="30.90384%" x2="112.206432%" y2="107.870971%" id="linearGradient-1">
+            <stop stop-color="#151515" offset="0%"></stop>
+            <stop stop-color="#AAAAAA" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="nav-shop1" fill="url(#linearGradient-1)">
+            <path d="M1.05263158,0 L18.9473684,0 L20,22 L-5.55111512e-16,22 L1.05263158,0 Z M4.13423759,3.74468085 L3.44827586,18.4113475 L16.4815487,18.4113475 L15.795587,3.74468085 L4.13423759,3.74468085 Z" id="Combined-Shape"></path>
+            <path d="M7.79519331,0 L7.79519331,4.92123667 C7.79519331,6.07543678 8.73085737,7.01110083 9.88505747,7.01110083 C11.0392576,7.01110083 11.9749216,6.07543678 11.9749216,4.92123667 L11.9749216,0 L14.4827586,0 L14.4827586,5.23208608 C14.4827586,7.77132631 12.4242977,9.82978723 9.88505747,9.82978723 C7.34581724,9.82978723 5.28735632,7.77132631 5.28735632,5.23208608 L5.28735632,0 L7.79519331,0 Z" id="Combined-Shape" style="mix-blend-mode: multiply;"></path>
+        </g>
+    </g>
+</svg>

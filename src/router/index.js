@@ -25,12 +25,12 @@ const AgentPurchase = r => require.ensure([], () => r(require('@/components/Agen
 const RechargeList = r => require.ensure([], () => r(require('@/components/RechargeList')), 'RechargeList')
 const RechargeBalance = r => require.ensure([], () => r(require('@/components/RechargeBalance')), 'RechargeBalance')
 const RechargeRecord = r => require.ensure([], () => r(require('@/components/RechargeRecord')), 'RechargeRecord')
-const AgentApply = r => require.ensure([], () => r(require('@/components/AgentApply')), 'AgentApply') 
+const AgentApply = r => require.ensure([], () => r(require('@/components/AgentApply')), 'AgentApply')
 const Agentors = r => require.ensure([], () => r(require('@/components/Agentors')), 'Agentors')
 const AgentorsCapitalDetail = r => require.ensure([], () => r(require('@/components/AgentorsCapitalDetail')), 'AgentorsCapitalDetail')
-const ApplyList = r => require.ensure([], () => r(require('@/components/ApplyList')), 'ApplyList')  
-const ArticleDetail = r => require.ensure([], () => r(require('@/components/ArticleDetail')), 'ArticleDetail') 
-const ApplyInfo = r => require.ensure([], () => r(require('@/components/ApplyInfo')), 'ApplyInfo') 
+const ApplyList = r => require.ensure([], () => r(require('@/components/ApplyList')), 'ApplyList')
+const ArticleDetail = r => require.ensure([], () => r(require('@/components/ArticleDetail')), 'ArticleDetail')
+const ApplyInfo = r => require.ensure([], () => r(require('@/components/ApplyInfo')), 'ApplyInfo')
 const ApplyResult = r => require.ensure([], () => r(require('@/components/ApplyResult')), 'ApplyResult')
 const UserPublishingCase = r => require.ensure([], () => r(require('@/components/UserPublishingCase')), 'UserPublishingCase')
 const Distributor = r => require.ensure([], () => r(require('@/components/Distributor')), 'Distributor')
@@ -49,7 +49,24 @@ const AgentOrder = r => require.ensure([], () => r(require('@/components/AgentOr
 const SupplyConfirm = r => require.ensure([], () => r(require('@/components/SupplyConfirm')), 'SupplyConfrim')
 const AgentOrderDetail = r => require.ensure([], () => r(require('@/components/AgentOrderDetail')), 'AgentOrderDetail')
 const JoinChat = r => require.ensure([], () => r(require('@/components/JoinChat')), 'JoinChat')
-
+//  氢链2.0改版页面
+const Index1 = r => require.ensure([], () => r(require('@/components/Index1')), 'Index1')
+const WaterfallList = r => require.ensure([], () => r(require('@/components/index/waterfall-list')), 'WaterfallList')
+const Question = r => require.ensure([], () => r(require('@/components/index/question')), 'Question')
+const Case = r => require.ensure([], () => r(require('@/components/index/case')), 'Case')
+const Follow = r => require.ensure([], () => r(require('@/components/index/follow')), 'Follow')
+const IndexMessage = r => require.ensure([], () => r(require('@/components/index/message')), 'IndexMessage')
+const ReleaseQuestion = r => require.ensure([], () => r(require('@/components/release-question')), 'ReleaseQuestion')
+const ReleaseCase = r => require.ensure([], () => r(require('@/components/release-case')), 'ReleaseCase')
+const QuestionDetail = r => require.ensure([], () => r(require('@/components/question-detail')), 'QuestionDetail')
+const ChooseProd = r => require.ensure([], () => r(require('@/components/choose-prod')), 'ChooseProd')
+const My1 = r => require.ensure([], () => r(require('@/components/my1')), 'My1')
+const UserIndex1 = r => require.ensure([], () => r(require('@/components/userIndex1')), 'UserIndex1')
+const QuestionList = r => require.ensure([], () => r(require('@/components/question-list')), 'QuestionList')
+const CaseList = r => require.ensure([], () => r(require('@/components/case-list')), 'CaseList')
+const InviteJoin = r => require.ensure([], () => r(require('@/components/inviteJoin')), 'InviteJoin')
+const Integral = r => require.ensure([], () => r(require('@/components/integral')), 'Integral')
+const Exchange = r => require.ensure([], () => r(require('@/components/exchange')), 'Exchange')
 /*
 * 公众号菜单链接
 */
@@ -63,12 +80,146 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Index',
-      component: Index,
+      name: 'Index1',
+      component: Index1,
+      redirect: '/index/recommend',
       meta: {
         title: '氢链'
+      },
+      children: [
+        {
+          path: '/index/recommend',
+          component: WaterfallList,
+          name: 'recommend',
+          meta: {
+            title: '推荐'
+          }
+        },
+        {
+          path: '/index/follow',
+          component: Follow,
+          meta: {
+            title: '关注'
+          }
+        },
+        {
+          path: '/index/case',
+          name: 'case',
+          component: Case,
+          meta: {
+            title: '案例'
+          }
+        },
+        {
+          path: '/index/question',
+          component: Question,
+          meta: {
+            title: '提问'
+          }
+        }
+      ]
+    },
+    {
+      path: '/my1',
+      name: 'My1',
+      component: My1,
+      meta: {
+        title: '我的'
       }
     },
+    {
+      path: '/userMessage',
+      name: 'IndexMessage',
+      component: IndexMessage,
+      meta: {
+        title: '消息'
+      }
+    },
+    {
+      path: '/releaseQuestion',
+      name: 'releaseQuestion',
+      component: ReleaseQuestion,
+      meta: {
+        title: '发布提问'
+      }
+    },
+    {
+      path: '/releaseCase',
+      name: 'releaseCase',
+      component: ReleaseCase,
+      meta: {
+        title: '发布案例'
+      }
+    },
+    {
+      path: '/questionDetail/:id',
+      name: 'questionDetail',
+      component: QuestionDetail,
+      meta: {
+        title: '提问详情'
+      }
+    },
+    {
+      path: '/chooseProd',
+      name: 'ChooseProd',
+      component: ChooseProd,
+      meta: {
+        title: '选择产品'
+      }
+    },
+    {
+      path: '/userIndex1',
+      name: 'UserIndex',
+      component: UserIndex1,
+      redirect: '/userIndex1/case',
+      meta: {
+        title: '我的主页'
+      },
+      children: [
+        {
+          path: '/userIndex1/question',
+          name: 'question',
+          component: QuestionList
+        },
+        {
+          path: '/userIndex1/case',
+          name: 'case',
+          component: CaseList
+        }
+      ]
+    },
+    {
+      path: '/inviteJoin',
+      name: 'inviteJoin',
+      component: InviteJoin,
+      meta: {
+        title: '邀请好友'
+      }
+    },
+    {
+      path: '/integral',
+      name: 'integral',
+      component: Integral,
+      meta: {
+        title: '我的积分'
+      }
+    },
+    {
+      path: '/exchange',
+      name: 'Exchange',
+      component: Exchange,
+      meta: {
+        title: '积分兑换'
+      }
+    },
+    // {
+    //   path: '/',
+    //   name: 'Index',
+    //   component: Index,
+    //   meta: {
+    //     title: '氢链'
+    //   }
+    // },
    	{
       path: '/shop/index',
       name: 'ShopIndex',

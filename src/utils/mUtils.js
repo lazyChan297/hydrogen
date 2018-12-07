@@ -36,23 +36,23 @@ function padding (str) {
 }
 
 // 保留数字两位小数点
-export function toDecimal(x) { 
-  var f = parseFloat(x); 
-  if (isNaN(f)) { 
-	return false; 
-  } 
-  var f = Math.round(x*100)/100; 
-  var s = f.toString(); 
-  var rs = s.indexOf('.'); 
-  if (rs < 0) { 
-	rs = s.length; 
-	s += '.'; 
-  } 
-  while (s.length <= rs + 2) { 
-	s += '0'; 
-  } 
-  return s; 
-} 
+export function toDecimal(x) {
+  var f = parseFloat(x);
+  if (isNaN(f)) {
+	return false;
+  }
+  var f = Math.round(x*100)/100;
+  var s = f.toString();
+  var rs = s.indexOf('.');
+  if (rs < 0) {
+	rs = s.length;
+	s += '.';
+  }
+  while (s.length <= rs + 2) {
+	s += '0';
+  }
+  return s;
+}
 
 // scrollTop animation
 export function scrollTop(el, from = 0, to, duration = 500, endCallback) {
@@ -148,7 +148,7 @@ export function checkToken (url) {
 	let pageUrl = urlObj.protocol + '//' + urlObj.host + '/' + urlObj.hash
 
 	//如果token失效则重新获取
-	setTimeout(() => {	   
+	setTimeout(() => {
 	   window.location.reload()
 	}, 60 *60 * 1000 * 2 )
 	if (!global.token && !getUrlParms('token')) {
@@ -157,7 +157,7 @@ export function checkToken (url) {
 		}
 	// 保存失效为两小时
 	}else if (url != pageUrl && url != global.serverHost + '/newCart/pay/#/goods/payment/') {
-		window.location.href = pageUrl	
+		window.location.href = pageUrl
 	}
 	if (getUrlParms('token')) {
 		wsCache.set('token', getUrlParms('token'), { exp : 60 * 60 * 2 } )

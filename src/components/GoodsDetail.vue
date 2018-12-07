@@ -15,7 +15,7 @@
           <div class="price">¥{{ goodsDetail.price | toDecimal }}</div>
         </div>
         <div class="goods-name">{{ goodsDetail.name }}</div>
-      </div> 
+      </div>
       <div class="labels">
         <div class="label-item">
           <span class="iconfont">
@@ -37,17 +37,17 @@
     <div v-if="nowIndex == 0" style="background: #fff">
       <!-- 商品评价 -->
       <div class="detail-part" v-if="comments.length > 0">
-        
+
         <div class="comments-container">
           <!-- 评论列表模板 -->
           <div class="comments-list">
-            <comments 
+            <comments
             v-infinite-scroll="loadMore"
             infinite-scroll-disabled="loading"
-            infinite-scroll-distance="10" 
-            @changeComments="changeComments" 
-            :comments="comments"></comments>        
-          </div>  
+            infinite-scroll-distance="10"
+            @changeComments="changeComments"
+            :comments="comments"></comments>
+          </div>
           <div class="loading-wrapper" style="height: 42px; overflow: hidden;">
             <div v-show="loading && comments.length > 0" class="loading-more">
               <inline-loading></inline-loading><span class="loading-text">加载中...</span>
@@ -124,7 +124,7 @@
           </div>
         </div>
       </div>
-     </transition> 
+     </transition>
     <!-- mask -->
     <transition name="fade">
       <div class="mask" v-if="isShow" @click="toogleChoosePen"></div>
@@ -141,7 +141,7 @@
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import { mapGetters, mapActions } from 'vuex'
-import { Group, Cell, XButton, Sticky, Tab, TabItem, InlineLoading, LoadMore } from 'vux' 
+import { Group, Cell, XButton, Sticky, Tab, TabItem, InlineLoading, LoadMore } from 'vux'
 import Cartcontrol from '@/components/public/Cartcontrol'
 import Comments from '@/components/public/Comments'
 import { toDecimal, getDateDiff, setStore } from '@/utils/mUtils'
@@ -176,7 +176,7 @@ export default {
         paginationClickable: true,
         loop: true,
         autoplay: 4000,
-        autoplayDisableOnInteraction: false      
+        autoplayDisableOnInteraction: false
       },
       isShow: false,
       count: 1,
@@ -198,12 +198,12 @@ export default {
   methods: {
     // 上拉加载评论列表
     loadMore () {
-      if (!this.nomore) {     
+      if (!this.nomore) {
         this.loading = true
         setTimeout(() => {
           this.getComments()
         }, 500)
-      }      
+      }
     },
     ...mapActions(['getCartLen']),
     changeComments (val) {
@@ -255,20 +255,19 @@ export default {
           let link = res.data.shareTimeline.link
           if (this.userInfo.distributor) {
             link = res.data.shareTimeline.link + `&type=share&userSn=${this.userInfo.userSn}`
-          } 
+          }
           this.$wechat.ready(() => {
             this.$wechat.onMenuShareTimeline({
-              title: res.data.shareTimeline.title,
+              title: res.data.shareAppMessage.title + '-' +res.data.shareAppMessage.desc,
               link,
               imgUrl: res.data.shareTimeline.imgUrl,
-              success: function () { 
+              success: function () {
 
               },
-              cancel: function () { 
-                
+              cancel: function () {
+
               }
             })
-
             this.$wechat.onMenuShareAppMessage({
               title: res.data.shareAppMessage.title, // 分享标题
               desc: res.data.shareAppMessage.desc, // 分享描述
@@ -294,7 +293,7 @@ export default {
             item.recomment.map(n => {
               n.finishedTime = n.finishedTime * 1000
               n.recommentedTime = n.recommentedTime * 1000
-              return n.time = getDateDiff(n.finishedTime, n.recommentedTime) 
+              return n.time = getDateDiff(n.finishedTime, n.recommentedTime)
             })
           })
           this.comments = this.comments.concat(comments)
@@ -317,7 +316,7 @@ export default {
         if (res.status == 1) {
           // ...
         }
-      })    
+      })
     }
   },
   mounted () {
@@ -346,7 +345,7 @@ export default {
       return toDecimal(val)
     }
   }
-}	
+}
 </script>
 
 <style scoped>
@@ -427,7 +426,7 @@ export default {
 .share-btn view {
   margin-right: 2px;
   color: #e02e24;
-} 
+}
 .share-btn::after {
   border: 0;
 }
@@ -584,7 +583,7 @@ export default {
   position: absolute;
   top: 0;
   z-index: 1;
-  
+
 }
 .progress .progress-left{
   left: 0;
@@ -617,7 +616,7 @@ export default {
   border-right: 0;
   -webkit-transform-origin: center right;
   transform-origin: center right;
-  
+
 }
 .progress .progress-value{
   width: 100%;
@@ -635,7 +634,7 @@ export default {
   padding: 10px;
 }
 .choose-goods .close-modal {
-  float: right; 
+  float: right;
 }
 .choose-goods-container {
   clear: both;

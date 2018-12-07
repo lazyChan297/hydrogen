@@ -14,9 +14,15 @@ import { InfiniteScroll } from 'mint-ui'
 import VueClipboard from 'vue-clipboard2'
 import http from '@/utils/http'
 import { checkToken, setStore, getStore, removeStore, getUrlParms } from '@/utils/mUtils'
-
+import "./assets/stylus/index.styl"
+import Vuelazyload from 'vue-lazyload'
 // mint-ui按需引入组件
 Vue.use(InfiniteScroll)
+
+//图片懒加载
+Vue.use(Vuelazyload, {
+  // loading: require('common/image/default_pic.jpg')
+})
 
 // 调用微信jssdk
 import { WechatPlugin } from 'vux'

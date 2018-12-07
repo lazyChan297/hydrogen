@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="78px" height="78px" viewBox="0 0 78 78" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>case</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="42.5054506%" x2="100%" y2="42.5054506%" id="linearGradient-1">
+            <stop stop-color="#0084FF" offset="0%"></stop>
+            <stop stop-color="#45A5FF" offset="100%"></stop>
+        </linearGradient>
+        <circle id="path-2" cx="30" cy="30" r="30"></circle>
+        <filter x="-27.5%" y="-17.5%" width="155.0%" height="155.0%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="6" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0.517647059   0 0 0 0 1  0 0 0 0.246971241 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="case" transform="translate(9.000000, 3.000000)">
+            <g id="Oval">
+                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+            </g>
+            <g id="案例" transform="translate(19.200000, 18.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                <path d="M13.8000282,16.0800318 L21.4800137,8.40002055 L13.8000282,0.720009265 L6.24000302,8.39999476 L13.8000282,16.0800318 Z M13.8000282,4.200018 L18.0000308,8.40002055 L13.8000024,12.6000231 L9.60002568,8.52000662 L13.8000282,4.200018 Z M14.880006,16.8000256 L16.8000153,16.8000256 L16.8000153,20.4000204 L12.000005,20.4000204 L12.000005,16.8000256 L12.8400107,16.8000256 L10.4400313,14.4000205 L9.60002568,14.4000205 L9.60002568,22.8000256 L19.2000204,22.8000256 L19.2000204,14.4000205 L17.2800112,14.4000205 L14.880006,16.8000256 Z M2.40003605,10.8000257 L2.40003605,6.00001541 L6.84001075,6.00001541 L9.23999011,3.60001027 L-2.06448e-05,3.60001027 L-2.06448e-05,13.200005 L9.23999011,13.200005 L6.84001075,10.8000257 L2.40003605,10.8000257 Z M1.19999481,14.3999947 L8.400036,14.3999947 L8.400036,21.6000101 L1.19999481,21.6000101 L1.19999481,14.3999947 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
