@@ -7,7 +7,7 @@
       <li class="tag-item">干性</li>
       <li class="tag-item">又性</li>
     </ul>
-    <ul class="waterfall-list" :class="showtag?'case':'recommend'" ref="recommendList">
+    <ul class="waterfall-list" :class="showtag?'case':'recommend'" ref="recommendList" @scroll.native="onScroll">
       <li class="recommend-item" ref="waterfallItem" v-for="(item, index) in list">
         <!-- <div class="back-container" v-if="index===0">
           <p class="back">返回全部</p>
@@ -31,10 +31,12 @@
             </div>
              <div class="case" v-if="item.type==='case'">
                <div class="compareBox" v-if="item.type==='case'">
-                 <img :src="item.compareList[0].src" alt="" >
-                 <img :src="item.compareList[1].src" alt="" >
+                 <img :src="loadimg(k.src,v,index)" alt="" v-for="(k,v) in item.compareList">
                </div>
-                <p class="desc"><span class="blue">#第{{item.days}}天#</span>{{item.desc}}</p>
+                <p class="desc">
+                  <font color="#0084FF">#第{{item.days}}天#</font>
+                  <span>{{item.desc}}</span>
+                </p>
                <p class="location">南宁市 青秀区</p>
                <p class="ask">
                  <span class="user">
@@ -58,9 +60,13 @@ const padding_left = 5
 const padding_right = 15
 const COLUMNS = 2
 const screenwight = window.innerWidth
+const width = (screenwight - padding_left - padding_right) / 2
+const imgWidth = (width - 20) / 2
+let imgHeightList = []
 export default {
   data() {
     return {
+      imgHeightList: [],
       showtag: false,
       list: [
         {
@@ -74,7 +80,7 @@ export default {
           desc: '修复痘痘，红血丝，激素脸，感觉良好超级超级长超级超级长超级超级长超级超级长超级超级长超级超级长超级超级长超',
           compareList: [
             { src: 'https://wx2.sinaimg.cn/mw690/879a982egy1fxomneheavj21og2inq8p.jpg' },
-            { src: 'https://wx2.sinaimg.cn/mw690/879a982egy1fxomneheavj21og2inq8p.jpg'}
+            { src: 'https://wx3.sinaimg.cn/mw690/457a1f4egy1fxxxtps6vqj20yi1pc4ex.jpg'}
           ],
           location: '南宁市 青秀区'
         },
@@ -83,7 +89,7 @@ export default {
           days: 12,
           desc: '修复痘痘，红血丝，激素脸，感觉良好',
           compareList: [
-            { src: 'https://wx2.sinaimg.cn/mw690/879a982egy1fxomneheavj21og2inq8p.jpg' },
+            { src: 'https://wx4.sinaimg.cn/mw690/b5df14abgy1fxxxinolsjj20k00u0mzl.jpg' },
             { src: 'https://wx2.sinaimg.cn/mw690/879a982egy1fxomneheavj21og2inq8p.jpg'}
           ],
           location: '南宁市 青秀区'
@@ -123,22 +129,29 @@ export default {
     }
   },
   created() {
-    this.listType = this.$route.name
   },
   mounted() {
     this._initWidth()
     this.calculateHeight()
   },
-  beforeRouteLeave(to, from, next) {
-    console.log(to, from)
-    if (to.name === 'case') {
-      this.showtag = this.$route.name !== 'recommend' ? true : false
-    }
-    next()
-  },
   methods: {
+    loadimg(src,v,index) {
+      let that = this
+      var img = new Image()
+      img.src = src
+      img.onload = function(e){
+        let percent = imgWidth / this.width
+        let height = this.height * percent
+        imgHeightList[index - 1] = height
+      }
+      return src
+    },
     selectItem() {
       this.$router.push('/questionDetail')
+    },
+    // 监听滚动
+    onScroll(e) {
+      // console.log(document.body.scrollTop)
     },
     // 计算宽度
     _initWidth() {
@@ -152,15 +165,18 @@ export default {
     calculateHeight() {
       let list = this.$refs.waterfallItem, heightList = [],width = list[0].offsetWidth
       for (let i = 0; i < list.length; i++) {
+        console.log(list[i].children)
         if (i < COLUMNS) {
           heightList.push(list[i].offsetHeight)
         } else {
+          let max = Math.max.apply(null, heightList)
           let min = Math.min.apply(null, heightList)
           let minIndex = this._findIndex(heightList, min)
-          list[i].style.position = 'absolute'
-          list[i].style.top = min + 'px'
-          list[i].style.left = minIndex * width + 5 + 'px'
-          heightList[minIndex] += list[i].offsetHeight
+          let changeIndex = minIndex + 2
+          let diff = -(max - min)
+          // console.log(max,min,diff,changeIndex)
+          // list[changeIndex].style.transform = `translate3D(0,${diff}px,0)`
+          // heightList[minIndex] += list[i].offsetHeight
         }
       }
     },
@@ -178,7 +194,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 
 @import "../../assets/stylus/variable.styl"
 .tag-list
@@ -248,6 +264,8 @@ export default {
     .desc
       margin:8px 0 5px
       font-size:12px
+      height:36px
+      overflow:hidden
       line-height:17px
       .blue
         color:$color-blue-a

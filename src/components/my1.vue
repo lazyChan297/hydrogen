@@ -11,7 +11,7 @@
         <div class="userInfo">
           <img :src="userInfo.avatarUrl" alt="" width="53" height="53">
           <span class="nickName">{{userInfo.nickName}}</span>
-          <span class="index">主页</span>
+          <router-link class="index" to="/userIndex1" tag="span">主页</router-link>
         </div>
         <ul>
           <li><p>15</p>关注</li>
@@ -36,16 +36,16 @@
       </router-link>
     </ul>
     <!-- 邀请好友 -->
-    <div class="share">
+    <router-link tag="div" to="/inviteJoin" class="share">
       <img src="../assets/images/share-banner.png" alt="">
-    </div>
+    </router-link>
     <div class="">
       <div class="routerLink" @click="chooseAddress">
         <i class="icon-address"></i>
         <span class="text">我的地址</span>
         <i class="icon-arrow"></i>
       </div>
-      <router-link :to="{ name: '', params: {} }" tag="div" class="routerLink">
+      <router-link to="/integral" tag="div" class="routerLink">
         <i class="icon-jifen"></i>
         <span class="text">我的积分</span>
         <span class="num">

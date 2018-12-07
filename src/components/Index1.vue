@@ -41,6 +41,9 @@ export default {
       ]
     }
   },
+  mounted() {
+    
+  },
   components: {
     TabBar,
     Search

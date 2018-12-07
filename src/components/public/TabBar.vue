@@ -12,7 +12,7 @@
       <div class="slide-wrapper" v-show="showSlide">
         <div class="left">
           <router-link to="/releaseQuestion" tag="div">
-            <i class="icon-tiwen"></i>
+            <i class="icon-bigtiwen"></i>
             <p>提问</p>
           </router-link>
         </div>

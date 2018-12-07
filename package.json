@@ -23,6 +23,7 @@
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^2.6.7",
     "vue-clipboard2": "^0.2.0",
+    "vue-lazyload": "^1.2.6",
     "vue-router": "^3.0.1",
     "vue-tantan-stack": "^1.0.0",
     "vue-video-player": "^5.0.2",

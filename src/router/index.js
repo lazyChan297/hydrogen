@@ -62,6 +62,11 @@ const QuestionDetail = r => require.ensure([], () => r(require('@/components/que
 const ChooseProd = r => require.ensure([], () => r(require('@/components/choose-prod')), 'ChooseProd')
 const My1 = r => require.ensure([], () => r(require('@/components/my1')), 'My1')
 const UserIndex1 = r => require.ensure([], () => r(require('@/components/userIndex1')), 'UserIndex1')
+const QuestionList = r => require.ensure([], () => r(require('@/components/question-list')), 'QuestionList')
+const CaseList = r => require.ensure([], () => r(require('@/components/case-list')), 'CaseList')
+const InviteJoin = r => require.ensure([], () => r(require('@/components/inviteJoin')), 'InviteJoin')
+const Integral = r => require.ensure([], () => r(require('@/components/integral')), 'Integral')
+const Exchange = r => require.ensure([], () => r(require('@/components/exchange')), 'Exchange')
 /*
 * 公众号菜单链接
 */
@@ -147,7 +152,7 @@ export default new Router({
       }
     },
     {
-      path: '/questionDetail',
+      path: '/questionDetail/:id',
       name: 'questionDetail',
       component: QuestionDetail,
       meta: {
@@ -162,14 +167,51 @@ export default new Router({
         title: '选择产品'
       }
     },
-    // {
-    //   path: '/userIndex1',
-    //   name: 'UserIndex',
-    //   component: UserIndex1,
-    //   meta: {
-    //     title: '我的主页'
-    //   }
-    // },
+    {
+      path: '/userIndex1',
+      name: 'UserIndex',
+      component: UserIndex1,
+      redirect: '/userIndex1/case',
+      meta: {
+        title: '我的主页'
+      },
+      children: [
+        {
+          path: '/userIndex1/question',
+          name: 'question',
+          component: QuestionList
+        },
+        {
+          path: '/userIndex1/case',
+          name: 'case',
+          component: CaseList
+        }
+      ]
+    },
+    {
+      path: '/inviteJoin',
+      name: 'inviteJoin',
+      component: InviteJoin,
+      meta: {
+        title: '邀请好友'
+      }
+    },
+    {
+      path: '/integral',
+      name: 'integral',
+      component: Integral,
+      meta: {
+        title: '我的积分'
+      }
+    },
+    {
+      path: '/exchange',
+      name: 'Exchange',
+      component: Exchange,
+      meta: {
+        title: '积分兑换'
+      }
+    },
     // {
     //   path: '/',
     //   name: 'Index',

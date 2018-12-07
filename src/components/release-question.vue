@@ -2,7 +2,7 @@
   <div class="releaseQuestion-wrapper">
     <div class="submit-box">
       <img :src="userInfo.avatarUrl" width="35" height="35" alt="">
-      <div class="submit" @click="uploadImg">发布</div>
+      <div class="submit">发布</div>
     </div>
     <div class="inputTitle-wrapper">
       <input type="text" name="" placeholder="输入问题并以问好结尾" value="">
@@ -10,65 +10,28 @@
     <div class="inputDesc-wrapper">
       <div class="inputDesc-inner">
         <ul class="uploadImg-box">
-          <li class="uploadImg">
+          <li class="uploadImg" @click="uploadImg">
             <div class="iconBox">
               <i class="icon-cam"></i>
             </div>
           </li>
-          <li class="imgbox">
+          <li class="imgbox" v-for="(item,index) in uploadImgs">
+            <div class="icon">
+              <i class="icon-delete" @click="deleteItem(index)"></i>
+            </div>
+            <div class="image-box" >
+              <img :src="item" alt="" width="45">
+            </div>
+
+          </li>
+          <!-- <li class="imgbox">
             <div class="icon">
               <i class="icon-delete"></i>
             </div>
-            <img :src="userInfo.avatarUrl" alt="" width="45" height="45">
-          </li>
-          <li class="imgbox">
-            <div class="icon">
-              <i class="icon-delete"></i>
+            <div class="image-box" style="width:45px;height:45px">
+              <img src="https://wx2.sinaimg.cn/mw690/879a982egy1fxomneheavj21og2inq8p.jpg" alt="" width="45">
             </div>
-            <img :src="userInfo.avatarUrl" alt="" width="45" height="45">
-          </li>
-          <li class="imgbox">
-            <div class="icon">
-              <i class="icon-delete"></i>
-            </div>
-            <img :src="userInfo.avatarUrl" alt="" width="45" height="45">
-          </li>
-          <li class="imgbox">
-            <div class="icon">
-              <i class="icon-delete"></i>
-            </div>
-            <img :src="userInfo.avatarUrl" alt="" width="45" height="45">
-          </li>
-          <li class="imgbox">
-            <div class="icon">
-              <i class="icon-delete"></i>
-            </div>
-            <img :src="userInfo.avatarUrl" alt="" width="45" height="45">
-          </li>
-          <li class="imgbox">
-            <div class="icon">
-              <i class="icon-delete"></i>
-            </div>
-            <img :src="userInfo.avatarUrl" alt="" width="45" height="45">
-          </li>
-          <li class="imgbox">
-            <div class="icon">
-              <i class="icon-delete"></i>
-            </div>
-            <img :src="userInfo.avatarUrl" alt="" width="45" height="45">
-          </li>
-          <li class="imgbox">
-            <div class="icon">
-              <i class="icon-delete"></i>
-            </div>
-            <img :src="userInfo.avatarUrl" alt="" width="45" height="45">
-          </li>
-          <li class="imgbox">
-            <div class="icon">
-              <i class="icon-delete"></i>
-            </div>
-            <img :src="userInfo.avatarUrl" alt="" width="45" height="45">
-          </li>
+          </li> -->
         </ul>
         <textarea name="name" rows="8" cols="80" placeholder="问题描述(选填)"></textarea>
       </div>
@@ -102,20 +65,23 @@ export default {
 
           console.log('res',res)
 			    let localIds = res.localIds // 返回选定照片的本地ID列表，localId可以作为img标签的src属性显示图片
-			    // that.uploadImgs.push(localIds)
+			    that.uploadImgs.push(localIds)
 
 			    // 上传图片到微信服务器
-			    that.$wechat.uploadImage({
-		        localId: localIds[0], // 需要上传的图片的本地ID，由chooseImage接口获得
-		        isShowProgressTips: 1, // 默认为1，显示进度提示
-		        success: result => {
-		          that.serverId[type] = result.serverId
-		        }
-		      })
+			    // that.$wechat.uploadImage({
+		      //   localId: localIds[0], // 需要上传的图片的本地ID，由chooseImage接口获得
+		      //   isShowProgressTips: 1, // 默认为1，显示进度提示
+		      //   success: result => {
+		      //     that.serverId[type] = result.serverId
+		      //   }
+		      // })
 
 			  }
 			})
 		},
+    deleteItem(index) {
+      this.uploadImgs.splice(index, 1)
+    }
   }
 }
 </script>
@@ -165,6 +131,13 @@ export default {
           margin-right: 15px;
         .iconBox
           margin:0 auto
+        .image-box
+          width:45px
+          height:45px
+          overflow:hidden
+          img
+            display: inline-block;
+            vertical-align: text-top
         .imgbox
           position:relative
           margin-right:15px

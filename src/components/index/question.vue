@@ -1,6 +1,6 @@
 <template lang="html">
   <ul class="question-list">
-    <li class="question-item">
+    <li class="question-item" @click="selectItem">
       <div class="top">
         <img src="../../assets/images/df_user.jpg"  width="40" height="40" alt="">
         <p class="userName">
@@ -49,6 +49,11 @@
 
 <script>
 export default {
+  methods: {
+    selectItem() {
+      this.$router.push(`/questionDetail/1`)
+    }
+  }
 }
 </script>
 

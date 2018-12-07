@@ -8,38 +8,22 @@
       <li class="tag-item">又性</li>
     </ul>
     <ul class="waterfall-list" :class="showtag?'case':'recommend'" ref="recommendList">
-      <li class="recommend-item" ref="waterfallItem" v-for="(item, index) in list">
+      <li class="recommend-item" ref="waterfallItem" v-for="(item, index) in caseList">
         <div class="local-container" v-if="index===0">
           <p class="back">返回全部</p>
           <p class="checkAll">查看所有人</p>
         </div>
-        <div class="inner">
-            <div class="questionBox" v-if="item.type==='question'">
-              <p class="userInfo" v-if="item.type==='question'">
-                <img src="../../assets/images/df_user.jpg" alt="" width="24" height="24">
-                <span class="name">zhangsan</span>
-                <span class="text">提问</span>
-              </p>
-              <p class="question" v-if="item.type==='question'">
-                 <i class="icon-ask"></i>
-                 <span>{{item.question}}</span>
-              </p>
-               <p class="answer" v-if="item.type==='question'">
-                 <span class="num">{{item.answer}}个回答</span>
-                 <span class="submit">回答</span>
-               </p>
-            </div>
-             <div class="case" v-if="item.type==='case'">
-               <div class="compareBox" v-if="item.type==='case'">
-                 <img :src="item.compareList[0].src" alt="" >
-                 <img :src="item.compareList[1].src" alt="" >
+        <div class="inner" v-else>
+             <div class="case">
+               <div class="compareBox">
+                 <img :src="loadimg(k.thumb, v)" alt="" v-for="(k,v) in item.imgs">
                </div>
-                <p class="desc"><span class="blue">#第{{item.days}}天#</span>{{item.desc}}</p>
+                <p class="desc" v-if="item.content"><span class="blue">#第{{item.days}}天#</span>{{item.content}}</p>
                <p class="location">南宁市 青秀区</p>
                <p class="ask">
                  <span class="user">
-                   <img src="../../assets/images/df_user.jpg" alt="" width="20" height="20">
-                   <span>张三</span>
+                   <img v-lazy="item.avatar" alt="" width="20" height="20">
+                   <span>{{item.nickName}}</span>
                  </span>
                  <span class="icon">
                    <i class="icon-unlike"></i>
@@ -54,13 +38,16 @@
 </template>
 
 <script>
+import http from '@/utils/http'
 const padding_left = 5
 const padding_right = 15
 const COLUMNS = 2
 const screenwight = window.innerWidth
+let width = (screenwight - padding_left - padding_right) / 2
 export default {
   data() {
     return {
+      caseList: [{}],
       showtag: false,
       list: [
         {},
@@ -120,24 +107,27 @@ export default {
           question: '第一次使用负氢离子,该如何使用'
         }
       ],
-      listType: 'recommend'
+      listType: 'recommend',
+      imgHeightList: [ ]
     }
   },
   created() {
-    this.listType = this.$route.name
   },
   mounted() {
-    this._initWidth()
-    this.calculateHeight()
-  },
-  beforeRouteLeave(to, from, next) {
-    console.log(to, from)
-    if (to.name === 'case') {
-      this.showtag = this.$route.name !== 'recommend' ? true : false
-    }
-    next()
+    this.getCaseList()
   },
   methods: {
+    loadimg(src,index) {
+      let that = this
+      let list = this.$refs.waterfallItem
+      let img = new Image()
+      img.src = src
+
+      img.onload = function() {
+        that.imgHeightList.push(list[index].offsetHeight)
+      }
+      return src
+    },
     // 计算宽度
     _initWidth() {
       let width = (screenwight - padding_left - padding_right) / 2
@@ -149,6 +139,7 @@ export default {
     // 计算高度
     calculateHeight() {
       let list = this.$refs.waterfallItem, heightList = [],width = list[0].offsetWidth
+      let imgHeightList = this.imgHeightList
       for (let i = 0; i < list.length; i++) {
         if (i < COLUMNS) {
           heightList.push(list[i].offsetHeight)
@@ -168,7 +159,35 @@ export default {
           return k
         }
       }
-    }
+    },
+    getCaseList () {
+			let params = {
+				page: this.page,
+				number: this.number
+			}
+			http.get('/shows', params, false, res => {
+				if (res.status == 1 ) {
+          let list = this.$refs.waterfallItem
+          let heightList = []
+          this.caseList = this.caseList.concat(res.data.shows)
+          this.$nextTick(() => {
+            list.forEach((item, i) =>{
+              if (i < COLUMNS) {
+                heightList.push(list[i].offsetHeight)
+              } else {
+                let max = Math.max.apply(null, heightList)
+                let min = Math.min.apply(null, heightList)
+                let minIndex = this._findIndex(heightList, min)
+                let dis = -(max - min)
+                // console.log(max,min)
+                // list[i].style.transform = `translate3D(0,${dis}px,0)`
+              }
+              console.log(item.offsetHeight)
+            })
+          })
+				}
+			})
+		}
   },
   components: {
 
@@ -199,7 +218,7 @@ export default {
   position: relative
   margin-bottom:50px
   padding:0 15px 0 5px
-  min-height: 100px
+  overflow:hidden
   &.recommend
     margin-top:26px
   .local-container, .back-container
