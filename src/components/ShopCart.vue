@@ -34,7 +34,6 @@
     <div class="fixBar-wrapper" v-if="cartList.length > 0">
       <div class="fixBar">
         <div class="totalPrice">总计：<span>¥{{ totalPrice | toDecimal }}</span>
-				<p class="activity" v-if="isActivity">活动买二免一,已优惠{{saves}}元</p>
 				</div>
         <div class="checkout">
           <span @click="toPayment" class="btn" :class="{ disabled: totalPrice == 0  }">结算</span>
@@ -270,15 +269,13 @@ export default {
   border-top:1px solid #eaeaea;
   padding: 0 10px 0 15px;
   font-size: 16px;
+  line-height: 45px;
 }
 .fixBar .totalPrice span {
   color: #e02e24;
   font-weight: 700;
 }
-.fixBar .totalPrice .activity{
-	font-size: 10px;
-	color: #e02e24;
-}
+
 .checkout {
   flex: 0 0 auto;
 }

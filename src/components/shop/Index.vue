@@ -40,10 +40,6 @@
       <div class="part-title">精品好货</div>
       <recommend-list :recommend="goodsList"></recommend-list>
     </div>
-    <div class="activity">
-      <div class="part-title">买二免一<span>(买一款可送其它任意一款产品)</span></div>
-      <recommend-list :recommend="activityList"></recommend-list>
-    </div>
     <!-- <a class="toFuPing" href="https://fupin.caomeng.me">
       <img src="./../../assets/images/package.gif">
     </a> -->
@@ -73,25 +69,10 @@ export default {
       LuckyData: null,
       luckyType: 0,
       goodsList: [],
-      activityList: [],
       lastThree: []
     }
   },
   computed: {
-    JumpPath () {
-      if (this.LuckyData.type == 1) {
-        if (this.LuckyData.orderNo && this.LuckyData.orderNo != '') {
-          return '/crazyBuying'
-        }
-        if (this.LuckyData.addrId) {
-          return '/winningPrize'
-        }else {
-          return '/winningPrize'
-        }
-        return '/winningPrize'
-      }
-      return '/crazyBuying'
-    },
   },
   methods: {
     // 初始化当前时间
@@ -132,41 +113,16 @@ export default {
           this.minutes = '00'
           this.seconds = '00'
           this.initTime()
-          this.getLuckyData()
         }
       }, 1000)
       function addZero (str) {
         return ('00' + str).substr(str.length)
       }
     },
-    // 获取抢购的数据
-    getLuckyData () {
-      http.get('/lucky', {}, false, res => {
-        if (res.status == 1) {
-          this.LuckyData = res.data
-          this.getRanking()
-          this.countDown(res.data.countDown * 1000)
-        }
-      })
-    },
-    // 获取当前前三排名
-    getRanking () {
-      let params = {
-        page: 1,
-        number: 3,
-        periodId: this.LuckyData.periodId
-      }
-      http.get('/lucky/top', params, false, res => {
-        if (res.status == 1 && res.data.users.length > 0) {
-          this.lastThree = res.data.users
-        }
-      })
-    },
     initIndexData () {
       http.get('/index', {}, false, res => {
         if (res.status == 1) {
-          this.goodsList = res.data.goods[1]
-          this.activityList = res.data.goods[2]
+          this.goodsList = res.data.goods
           this.$wechat.ready(() => {
             this.$wechat.onMenuShareTimeline({
               title: res.data.shareTimeline.title,
@@ -192,13 +148,6 @@ export default {
   },
   mounted () {
     this.initIndexData()
-    // 检查当前用户是否已经中过奖
-    http.post('/lucky/check', {}, false, res => {
-      if (res.status == 1) {
-        this.luckyType = res.data.type
-      }
-    })
-    this.getLuckyData()
   },
   filters: {
     toDecimal (val) {
