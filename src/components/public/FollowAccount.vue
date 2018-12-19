@@ -3,7 +3,7 @@
 		<div class="topfixed-wrapper">
 			<div class="topfixed-bar" :class="{ fadeDown: fadeDown }" @click="showQrcode = true">
 				<x-icon @click.stop="closeFixedBar" type="ios-close-outline" size="20" style="fill: #fff"></x-icon>
-				<span class="follow-tips">关注参与好货0元抢，免费大奖拿回家！</span>
+				<span class="follow-tips">关注氢链服务号</span>
 				<div class="follow-btn">立即关注</div>
 			</div>
 		</div>

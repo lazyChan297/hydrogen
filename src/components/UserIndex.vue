@@ -225,15 +225,7 @@ export default {
 			this.getCaseDeteil(this.userSn)
 			// 记录访问
 			this.userAddViewer(this.$route.query.sharer)
-			let params = {
-				distributor: this.userSn
-			}
-			http.post('/users/setDistributor', params, false, res => {
-        if (res.status == 1) {
-          // ...
-        }
-      })
-		}else {
+		} else {
 			if (this.userInfo) {
 				this.getCaseDeteil(this.userInfo.userSn)
 			}

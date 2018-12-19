@@ -136,7 +136,6 @@ export default {
               distributor: userSn,
               cartNo: res.data.cartNo
             }
-
             http.post('/users/setDistributor', params, false, res => {
               if (res.status == 1) {
                 // ...

@@ -96,14 +96,6 @@ export default {
 		if (this.$route.query.userSn) {
 			setStore('userSn', this.$route.query.userSn)
 			this.userAddViewer(this.$route.query.userSn)
-			let params = {
-				distributor: this.$route.query.userSn
-			}
-			http.post('/users/setDistributor', params, false, res => {
-	      if (res.status == 1) {
-	        // ...
-	      }
-	    })
 		}
 	},
 	watch: {

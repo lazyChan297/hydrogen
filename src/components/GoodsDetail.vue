@@ -268,7 +268,6 @@ export default {
                 
               }
             })
-
             this.$wechat.onMenuShareAppMessage({
               title: res.data.shareAppMessage.title, // 分享标题
               desc: res.data.shareAppMessage.desc, // 分享描述
@@ -328,14 +327,6 @@ export default {
       this.disableCart = true
       setStore('userSn', this.$route.query.userSn)
       this.userAddViewer(this.$route.query.userSn)
-      let params = {
-        distributor: this.$route.query.userSn
-      }
-      http.post('/users/setDistributor', params, false, res => {
-        if (res.status == 1) {
-          // ...
-        }
-      })
     }
     if (this.$route.query.userSn && this.$route.query.type == 'share') {
       setStore('userSn', this.$route.query.userSn)
