@@ -21,7 +21,7 @@
 			<div v-else-if="details.status == 2" class="apply-status rejected">已拒绝申请</div>
 			<div class="apply-time">
 				<span class="label">审核时间</span>
-				<span class="content">2018年8月31日 15:01</span>
+				<span class="content">{{details.handledDate}}</span>
 			</div>
 		</div>
 
