@@ -35,7 +35,9 @@
         </div>
       </div>
     </div>  -->
-
+    <div class="banner">
+      <img src="../../assets/images/mysy.png" alt="">
+    </div>
     <div class="recommend">
       <div class="part-title">精品好货</div>
       <recommend-list :recommend="goodsList"></recommend-list>
@@ -158,6 +160,12 @@ export default {
 </script>
 
 <style scoped>
+.banner{
+  padding: 10px;
+}
+.banner img{
+  width: 100%;
+}
 .part-title {
   position: relative;
   padding: 15px 0 15px 10px;

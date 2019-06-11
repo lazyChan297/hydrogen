@@ -3,7 +3,7 @@
 		<div class="bottom-fixed">
 			<ul class="bottom-nav" :style="{ background: bgColor }">
 				<router-link class="bottom-nav-item" :to="{ path: '/' }" tag="li">
-					<i class="i-shouy"></i>
+					<i class="i-shangc"></i>
 					<h4>首页</h4>
 				</router-link>
 				<router-link class="bottom-nav-item" :to="{ path: '/hydrogen' }" tag="li">
@@ -11,8 +11,8 @@
 					<h4>发现</h4>
 				</router-link>
 				<router-link class="bottom-nav-item" :to="{ path: '/shop/index' }" tag="li">
-					<i class="i-shangc"></i>
-					<h4>商城</h4>
+					<i class="i-shouy"></i>
+					<h4>案例</h4>
 				</router-link>
 				<router-link class="bottom-nav-item" :to="{ path: '/cart' }" tag="li">
 					<i class="i-gouwuc"><badge class="badge" :text="cartLen"></badge></i>

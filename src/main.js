@@ -41,9 +41,9 @@ if (process.env.NODE_ENV == 'development') {
   global.serverHost = ""
 }else{
   // 生产服务器
-  // global.serverHost = "https://caomeng.me"
+  global.serverHost = "https://caomeng.me"
   // 测服务器
-  global.serverHost = "https://ceshi168.caomeng.me"
+  // global.serverHost = "https://ceshi168.caomeng.me"
 }
 
 FastClick.attach(document.body)

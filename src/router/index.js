@@ -63,16 +63,16 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Index',
-      component: Index,
+      name: 'ShopIndex',
+      component: ShopIndex,
       meta: {
         title: '氢链'
       }
     },
    	{
       path: '/shop/index',
-      name: 'ShopIndex',
-      component: ShopIndex,
+      name: 'Index',
+      component: Index,
       meta: {
         title: '氢链'
       }

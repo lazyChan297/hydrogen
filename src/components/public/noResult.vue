@@ -3,7 +3,7 @@
     <div class="no-results-wrapper">
       <img src="../../assets/images/no_results.svg">
       <div class="text">{{ text }}</div>
-      <x-button :link="{ path: '/shop/index' }" v-if="showBtn" class="btn" mini type="primary">现在就去购买</x-button>
+      <x-button :link="{ path: '/' }" v-if="showBtn" class="btn" mini type="primary">现在就去购买</x-button>
     </div>
   </div>
 </template>
