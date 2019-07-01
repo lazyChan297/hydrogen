@@ -2,8 +2,8 @@
 	<div class="qrcode">
 		<div class="qrcode-box">
 			<img src="./../assets/images/qr_code.png">
-			<h4>氢链公众号</h4>
-			<p>长按图片识别二维码，关注氢链公众号</p>
+			<h4>氢量极品公众号</h4>
+			<p>长按图片识别二维码，关注氢量极品公众号</p>
 		</div>
 	</div>
 </template>

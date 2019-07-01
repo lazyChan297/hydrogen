@@ -5,7 +5,7 @@
 		</div>	
 		<div class="intro">
 			<h4>招商政策</h4>
-			<p>氢链目前招县（区）区域独家代理；县代必须是企业法人，是线上和线下的经营主体，自主纳税。</p>
+			<p>氢量极品目前招县（区）区域独家代理；县代必须是企业法人，是线上和线下的经营主体，自主纳税。</p>
 			<router-link class="jump-btn" :to="jumpPath">申请代理</router-link>
 		</div>
 	</div>

@@ -40,7 +40,7 @@
               <img :src="item.avatar">
             </div>
             <div class="context">
-              <h4>{{ item.nickname }} 的氢链</h4>
+              <h4>{{ item.nickname }} 的氢量极品</h4>
               <p>点击头像进入主页</p>
             </div>
           </div>

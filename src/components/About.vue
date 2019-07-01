@@ -3,7 +3,7 @@
 		<div class="header">
 			<img src="./../assets/images/about_hd.jpg">
 			<div class="intro">
-				<p>氢链是一个固体负氢离子产品新零售平台，坚持以用户为中心的理念，为消费者提供即时的线上+线下服务</p>
+				<p>氢量极品是一个固体负氢离子产品新零售平台，坚持以用户为中心的理念，为消费者提供即时的线上+线下服务</p>
 			</div>			
 		</div>
 		<div class="contact part">
@@ -37,7 +37,7 @@
 				</div>
 			</div>
 		</div>
-		<router-link class="jump-index" :to="{ path: '/' }">进入氢链</router-link>
+		<router-link class="jump-index" :to="{ path: '/' }">进入氢量极品</router-link>
 	</div>
 </template>
 

@@ -66,7 +66,7 @@ export default new Router({
       name: 'ShopIndex',
       component: ShopIndex,
       meta: {
-        title: '氢链'
+        title: '氢量极品'
       }
     },
    	{
@@ -74,7 +74,7 @@ export default new Router({
       name: 'Index',
       component: Index,
       meta: {
-        title: '氢链'
+        title: '氢量极品'
       }
     },
     {
@@ -82,7 +82,7 @@ export default new Router({
       name: 'UserIndex',
       component: UserIndex,
       meta: {
-        title: '氢链'
+        title: '氢量极品'
       }
     },
     {
@@ -146,7 +146,7 @@ export default new Router({
       name: 'Hydrogen',
       component: Hydrogen,
       meta: {
-        title: '氢链'
+        title: '氢量极品'
       }
     },
     {
@@ -378,7 +378,7 @@ export default new Router({
       name: 'Status',
       component: Status,
       meta: {
-        title: '氢链'
+        title: '氢量极品'
       }
     },
     {
@@ -426,7 +426,7 @@ export default new Router({
       name: 'AgentOrder',
       component: AgentOrder,
       meta: {
-        title: '氢链'
+        title: '氢量极品'
       }
     },
     {
@@ -450,7 +450,7 @@ export default new Router({
       name: 'About',
       component: About,
       meta: {
-        title: '氢链'
+        title: '氢量极品'
       }
     },
     {
@@ -458,7 +458,7 @@ export default new Router({
       name: 'WechatPublicQrCode',
       component: WechatPublicQrCode,
       meta: {
-        title: '氢链'
+        title: '氢量极品'
       }
     },
     {
@@ -466,7 +466,7 @@ export default new Router({
       name: 'Investment',
       component: Investment,
       meta: {
-        title: '氢链'
+        title: '氢量极品'
       }
     },
     {
@@ -474,7 +474,7 @@ export default new Router({
       name: 'JoinChatCode',
       component: JoinChat,
       meta: {
-        title: '氢链'
+        title: '氢量极品'
       }
     }
   ]

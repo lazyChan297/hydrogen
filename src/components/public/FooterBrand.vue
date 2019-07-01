@@ -1,6 +1,6 @@
 <template>
 	<div class="footer-brand">
-		<img src="./../../assets/images/footer_brand.png">
+		<img src="./../../assets/images/LOGO1.png">
 	</div>
 </template>
 

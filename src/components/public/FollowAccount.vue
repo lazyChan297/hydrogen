@@ -3,7 +3,7 @@
 		<div class="topfixed-wrapper">
 			<div class="topfixed-bar" :class="{ fadeDown: fadeDown }" @click="showQrcode = true">
 				<x-icon @click.stop="closeFixedBar" type="ios-close-outline" size="20" style="fill: #fff"></x-icon>
-				<span class="follow-tips">关注氢链服务号</span>
+				<span class="follow-tips">关注氢量极品服务号</span>
 				<div class="follow-btn">立即关注</div>
 			</div>
 		</div>
@@ -86,6 +86,7 @@ export default {
 }
 .fadeDown {
 	position: fixed;
+	width:100%;
 	z-index: 99;
 	-webkit-animation: ani-fadeDown .5s ease forwards;
 	-moz-animation: ani-fadeDown .5s ease forwards;

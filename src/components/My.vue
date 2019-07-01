@@ -4,7 +4,7 @@
       <div class="top-info">
         <div class="user-info">
           <h4>你好，{{ user.nickname }}</h4>
-          <p>今天是你来到氢链的第{{ user.days }}天</p>
+          <p>今天是你来到氢量极品的第{{ user.days }}天</p>
         </div>
         <router-link class="i-setting" :to="{ path: '/my/setting' }">
           <svg class="icon" aria-hidden="true">
@@ -19,7 +19,7 @@
               <div class="top-hydrogen-left">
                 <div class="avatar"><img :src="user.avatar"></div>
                 <div class="content">
-                  <h4>我的氢链</h4>
+                  <h4>我的氢量极品</h4>
                   <p>进入个人主页</p>
                 </div>
               </div>
@@ -38,6 +38,12 @@
         </div>
       </div>
       <div class="my-link">
+        <router-link :to="{path:'marketing/qrcode'}" class="my-link-item" tag="div">
+          <div class="link-item-left">
+            <i class="link-icon"><img src="./../assets/images/my_link_icon05.png"></i>
+            <h4>我的二维码</h4>
+          </div>
+        </router-link>
         <router-link :to="{ path: '/my/order', query: { type: 0 } }" class="my-link-item" tag="div">
           <div class="link-item-left">
             <i class="link-icon"><img src="./../assets/images/my_link_icon01.png"></i>

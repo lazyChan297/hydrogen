@@ -5,12 +5,12 @@
 				<div class="avatar">
 					<img :src="caseDeteil.avatar">
 				</div>
-				<h4>{{ caseDeteil.nickname }} 的氢链</h4>
+				<h4>{{ caseDeteil.nickname }} 的氢量极品</h4>
 			</div>
 			<span @click="toPublishingCase" v-if="!userSn && caseDeteil.imgs || userSn == userInfo.userSn" class="handle-btn">编辑</span>
 			<span @click="toPublishingCase" v-if="!userSn && !caseDeteil.imgs" class="handle-btn">发布</span>
 		</div>
-		<div class="container" v-if="caseDeteil.imgs">
+		<div class="container" v-if="caseDeteil.imgs.length">
 			<div class="case-imgs">
 				<div class="after" @click="previewImage(caseDeteil.imgs[0].original, caseDeteil.imgs)">
 					<span class="img-holder">
@@ -62,7 +62,7 @@
 		<div style="height: 10px;"></div>
 		<!-- 推荐 -->
 		<div class="recommend" v-if="caseDeteil.imgs">
-			<div class="part-title">氢链推荐</div>
+			<div class="part-title">氢量极品推荐</div>
 			<recommend-list :recommend="recommends" type="page"></recommend-list>
 		</div>
 		<div  v-if="!userSn && !caseDeteil.imgs" class="no-diary">
