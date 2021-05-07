@@ -14,7 +14,7 @@
     "echarts": "^4.2.0-rc.1",
     "fastclick": "^1.0.6",
     "loadsh": "^0.0.2",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.21",
     "mint-ui": "^2.2.13",
     "nprogress": "^0.2.0",
     "stylus": "^0.54.5",
